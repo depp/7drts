@@ -42,6 +42,17 @@ http://opensource.org/licenses/BSD-2-Clause
 Submit your code through GitHub pull requests.  Please try to write
 nice commit messages.
 
+Compiling on Linux
+------------------
+
+You'll need GLFW 3, which you probably have to install from source.
+Note that GLFW 2 is not supported.
+
+    $ autoreconf -fi
+    $ ./configure --enable-warnings=-Werror
+    $ make
+    $ ./seven
+
 Info for other creative folks
 -----------------------------
 
