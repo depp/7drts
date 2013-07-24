@@ -15,4 +15,11 @@ PKG_CHECK_EXISTS([glfw3], [
   AC_SUBST([GLFW_LIBS])
 ], [AC_MSG_ERROR([GLFW 3 must be installed.])])
 
+PKG_CHECK_EXISTS([glew], [
+  GLEW_CFLAGS=`$PKG_CONFIG --cflags glew`
+  GLEW_LIBS=`$PKG_CONFIG --libs glew`
+  AC_SUBST([GLEW_CFLAGS])
+  AC_SUBST([GLEW_LIBS])
+], [AC_MSG_ERROR([GLEW must be installed.])])
+
 AC_OUTPUT

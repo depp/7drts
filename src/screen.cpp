@@ -1,5 +1,6 @@
 #include "opengl.hpp"
 #include "screen.hpp"
+#include <cstdio>
 namespace Seven {
 
 // Test, temporary
@@ -118,12 +119,19 @@ int Screen::main(int argc, char *argv[]) {
 
     glfwMakeContextCurrent(window);
 
+    GLenum glewErr = glewInit();
+    if (glewErr != GLEW_OK) {
+        std::fprintf(stderr, "error in glewInit(): %s\n",
+                     glewGetErrorString(glewErr));
+        glfwTerminate();
+        return 1;
+    }
+
     while (!glfwWindowShouldClose(window)) {
         if (hidden_) {
             glfwWaitEvents();
         } else {
             main_screen_->draw(glfwGetTime());
-            glEnd();
             gl_error_check("main");
             glfwSwapBuffers(window);
             glfwPollEvents();
