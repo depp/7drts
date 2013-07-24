@@ -104,6 +104,7 @@ int Screen::main(int argc, char *argv[]) {
     GLFWwindow *window = glfwCreateWindow(
         1280, 720, "7drts", nullptr, nullptr);
     if (!window) {
+        std::fputs("error initializing GLFW\n", stderr);
         glfwTerminate();
         return 1;
     }
