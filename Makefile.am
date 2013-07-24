@@ -8,5 +8,7 @@ seven_LDADD = @GLFW_LIBS@
 seven_LDFLAGS = -Wl,--as-needed
 
 seven_SOURCES = \
-    src/screen.cpp \
-    src/screeen.hpp
+	src/opengl.cpp \
+	src/opengl.hpp \
+	src/screen.cpp \
+	src/screeen.hpp

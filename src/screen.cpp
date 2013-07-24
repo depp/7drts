@@ -1,3 +1,4 @@
+#include "opengl.hpp"
 #include "screen.hpp"
 namespace Seven {
 
@@ -122,6 +123,8 @@ int Screen::main(int argc, char *argv[]) {
             glfwWaitEvents();
         } else {
             main_screen_->draw(glfwGetTime());
+            glEnd();
+            gl_error_check("main");
             glfwSwapBuffers(window);
             glfwPollEvents();
         }
