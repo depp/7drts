@@ -13,5 +13,8 @@
 /install-sh
 /missing
 
+# Xcode
+*.xcuserdatad
+
 /seven
 
