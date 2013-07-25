@@ -10,5 +10,9 @@ seven_LDFLAGS = -Wl,--as-needed
 seven_SOURCES = \
 	src/opengl.cpp \
 	src/opengl.hpp \
+	src/resource.cpp \
+	src/resource.hpp \
 	src/screen.cpp \
-	src/screeen.hpp
+	src/screeen.hpp \
+	src/texture.cpp \
+	src/texture.hpp

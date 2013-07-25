@@ -1,5 +1,7 @@
 #include "opengl.hpp"
 #include "screen.hpp"
+#include "texture.hpp"
+#include "resource.hpp"
 #include <cstdio>
 namespace Seven {
 
@@ -31,6 +33,7 @@ void Screen::key(int keycode, bool state) {
     (void) keycode;
     (void) state;
 }
+
 
 void Screen::mouse_button(int button, bool state) {
     (void) button;
@@ -119,6 +122,11 @@ int Screen::main(int argc, char *argv[]) {
     glfwSetScrollCallback(window, scroll_callback);
 
     glfwMakeContextCurrent(window);
+
+    Texture tex1, tex2;
+    tex1.load_file("tex/tex1");
+    tex2.load_file("tex/tex2");
+    Resource::load_all();
 
     GLenum glewErr = glewInit();
     if (glewErr != GLEW_OK) {
