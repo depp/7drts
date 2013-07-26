@@ -7,23 +7,54 @@ namespace Seven {
 
 // Test, temporary
 class TestScreen : public Screen {
-public:
-    virtual ~TestScreen()
-    { }
+    Texture tex;
 
-    virtual void draw(double time)
-    {
+public:
+    TestScreen() {
+        tex.load_file("assets/sprites/little_sprite/LSdefaultfront");
+    }
+
+    virtual ~TestScreen() { }
+
+    virtual void draw(double time) {
         (void) time;
+        glViewport(0, 0, width(), height());
         glClearColor(0.9, 0.3, 0.1, 0.0);
         glClear(GL_COLOR_BUFFER_BIT);
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        glOrtho(0, (double) width(),
+                0, (double) height(),
+                1.0, -1.0);
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        glScaled((double) tex.img_width(), (double) tex.img_height(), 1.0);
+        float tw = (float) tex.img_width() / (float) tex.tex_width();
+        float th = (float) tex.img_height() / (float) tex.tex_height();
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, tex.texture());
+        glBegin(GL_TRIANGLE_STRIP);
+        glTexCoord2f(0.0f,   th); glVertex2f(0.0f, 0.0f);
+        glTexCoord2f(  tw,   th); glVertex2f(1.0f, 0.0f);
+        glTexCoord2f(0.0f, 0.0f); glVertex2f(0.0f, 1.0f);
+        glTexCoord2f(  tw, 0.0f); glVertex2f(1.0f, 1.0f);
+        glEnd();
+        glDisable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, 0);
+        glDisable(GL_BLEND);
     }
 };
 
+int Screen::width_, Screen::height_;
 Screen *Screen::main_screen_ = nullptr;
 bool Screen::hidden_ = false;
 
 Screen::~Screen()
 { }
+
+void Screen::resize() { }
 
 void Screen::set_hidden(bool hidden) {
     (void) hidden;
@@ -33,7 +64,6 @@ void Screen::key(int keycode, bool state) {
     (void) keycode;
     (void) state;
 }
-
 
 void Screen::mouse_button(int button, bool state) {
     (void) button;
@@ -54,6 +84,12 @@ void Screen::scroll(double xoffset, double yoffset) {
     (void) yoffset;
 }
 
+void Screen::resize_callback(GLFWwindow *window, int width, int height) {
+    (void) window;
+    width_ = width;
+    height_ = height;
+    main_screen_->resize();
+}
 
 void Screen::iconify_callback(GLFWwindow *window, int state) {
     (void) window;
@@ -112,19 +148,19 @@ int Screen::main(int argc, char *argv[]) {
         return 1;
     }
 
-    main_screen_ = new TestScreen();
-
+    glfwSetWindowSizeCallback(window, resize_callback);
     glfwSetWindowIconifyCallback(window, iconify_callback);
     glfwSetKeyCallback(window, key_callback);
     glfwSetMouseButtonCallback(window, mouse_button_callback);
     glfwSetCursorPosCallback(window, cursor_pos_callback);
     glfwSetCursorEnterCallback(window, cursor_enter_callback);
     glfwSetScrollCallback(window, scroll_callback);
+    glfwGetWindowSize(window, &width_, &height_);
+    std::printf("window: %dx%d\n", width_, height_);
 
     glfwMakeContextCurrent(window);
 
-    Texture tex;
-    tex.load_file("assets/sprites/little_sprite/LSdefaultfront");
+    main_screen_ = new TestScreen();
     Resource::load_all();
 
     GLenum glewErr = glewInit();

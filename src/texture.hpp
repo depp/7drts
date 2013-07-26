@@ -11,8 +11,10 @@ class Texture {
     static const std::string prefix;
 
     struct Info {
-        Info() : width(0), height(0), texture(0) { }
-        int width, height;
+        Info() : tex_width(0), tex_height(0),
+                 img_width(0), img_height(0), texture(0) { }
+        int tex_width, tex_height;
+        int img_width, img_height;
         GLuint texture;
     };
 
@@ -29,8 +31,10 @@ public:
 
     ~Texture();
 
-    int width() const { return info_.width; }
-    int height() const { return info_.height; }
+    int tex_width() const { return info_.tex_width; }
+    int tex_height() const { return info_.tex_height; }
+    int img_width() const { return info_.img_width; }
+    int img_height() const { return info_.img_height; }
     GLuint texture() const { return info_.texture; }
 
     void load_file(const std::string &path);

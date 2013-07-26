@@ -8,6 +8,7 @@ public:
     virtual ~Screen();
 
     virtual void draw(double time) = 0;
+    virtual void resize();
     virtual void set_hidden(bool hidden);
     virtual void key(int keycode, bool state);
     virtual void mouse_button(int button, bool state);
@@ -23,6 +24,7 @@ private:
     static Screen *main_screen_;
     static bool hidden_;
 
+    static void resize_callback(GLFWwindow *window, int width, int height);
     static void iconify_callback(GLFWwindow *window, int state);
     static void key_callback(GLFWwindow *window, int key, int scancode,
                              int action, int mods);

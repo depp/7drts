@@ -15,7 +15,7 @@ public:
     Texture *first_;
 
     TexResource(const std::string &path)
-        : Resource(Texture::prefix + path), path_(path) { }
+        : Resource(Texture::prefix + path), path_(path), first_(nullptr) { }
 
     virtual ~TexResource() {
         if (info_.texture != 0)
@@ -25,6 +25,30 @@ public:
     virtual void load() {
         Buffer buf = File::read(path_ + PNG_SUFFIX);
         Pixmap pixmap = PNG::load(buf.data(), buf.size());
+        GLenum ifmt, efmt;
+        switch (pixmap.channel_count()) {
+        case 1: ifmt = GL_R8; efmt = GL_RED; break;
+        case 2: ifmt = GL_RG8; efmt = GL_RG; break;
+        case 3: ifmt = GL_RGBA8; efmt = GL_RGB; break;
+        case 4: ifmt = GL_RGBA8; efmt = GL_RGBA; break;
+        }
+        GLuint tex;
+        glGenTextures(1, &tex);
+        glBindTexture(GL_TEXTURE_2D, tex);
+        glTexImage2D(
+            GL_TEXTURE_2D, 0, ifmt, pixmap.buf_width(), pixmap.buf_height(),
+            0, efmt, GL_UNSIGNED_BYTE, pixmap.data());
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glBindTexture(GL_TEXTURE_2D, 0);
+        gl_error_check("texture %s", path_.c_str());
+        info_.tex_width = pixmap.buf_width();
+        info_.tex_height = pixmap.buf_height();
+        info_.img_width = pixmap.img_width();
+        info_.img_height = pixmap.img_height();
+        info_.texture = tex;
+        for (Texture *tp = first_; tp != nullptr; tp = tp->next_)
+            tp->info_ = info_;
     }
 
     void remove(Texture *tex) {
