@@ -1,9 +1,12 @@
 #include "texture.hpp"
 #include "resource.hpp"
+#include "file.hpp"
+#include "pixmap.hpp"
 #include <cassert>
 namespace Seven {
 
 const std::string Texture::prefix = "texture:";
+static const std::string PNG_SUFFIX(".png");
 
 class Texture::TexResource : public Resource {
 public:
@@ -20,7 +23,8 @@ public:
     }
 
     virtual void load() {
-        
+        Buffer buf = File::read(path_ + PNG_SUFFIX);
+        Pixmap pixmap = PNG::load(buf.data(), buf.size());
     }
 
     void remove(Texture *tex) {

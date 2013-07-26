@@ -22,4 +22,11 @@ PKG_CHECK_EXISTS([glew], [
   AC_SUBST([GLEW_LIBS])
 ], [AC_MSG_ERROR([GLEW must be installed.])])
 
+PKG_CHECK_EXISTS([libpng], [
+  LIBNG_CFLAGS=`$PKG_CONFIG --cflags libpng`
+  LIBPNG_LIBS=`$PKG_CONFIG --libs libpng`
+  AC_SUBST([LIBPNG_CFLAGS])
+  AC_SUBST([LIBPNG_LIBS])
+], [AC_MSG_ERROR([LibPNG must be installed.])])
+
 AC_OUTPUT

@@ -66,7 +66,9 @@ public:
     void premultiply_alpha();
 };
 
-Pixmap load_png(const void *data, std::size_t size);
+namespace PNG {
+Pixmap load(const void *data, std::size_t size);
+}
 
 }
 #endif
