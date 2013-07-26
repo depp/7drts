@@ -120,8 +120,8 @@ Pixmap load(const void *data, std::size_t size) {
     if (!obj.read_info())
         throw std::runtime_error("PNG::load()");
 
-    if (obj.width < 1 || obj.width >= Pixmap::MAX_SIZE ||
-        obj.height < 1 || obj.height >= Pixmap::MAX_SIZE) {
+    if (obj.width < 1 || obj.width > Pixmap::MAX_SIZE ||
+        obj.height < 1 || obj.height > Pixmap::MAX_SIZE) {
         std::fputs("PNG: image size out of range\n", stderr);
         throw std::runtime_error("PNG::load()");
     }
