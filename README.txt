@@ -53,6 +53,29 @@ Note that GLFW 2 is not supported.
     $ make
     $ ./seven
 
+Compiling on OS X
+-----------------
+
+You'll need to extract the GLEW and GLFW source code in the "libs"
+directory, and rename the extracted code as "glew" and "glfw", then
+build the code.  Building GLFW requires CMake.
+
+    $ cd libs
+    $ unzip /path/to/glfw-3.0.1.zip
+    $ mv glfw-3.0.1 glfw
+    $ (cd glfw; cmake .; make -j4)
+    $ tar zxvf /path/to/glew-1.10.0.tgz
+    $ mv glew-1.10.0 glew
+    $ (cd glew; make -j4)
+
+Once you're done, you must also set the run directory of the game.  In
+Xcode, go to Project -> Scheme -> Edit Scheme... and for the schemes
+"Run Seven.app" and "Profile Seven.app", go to Options -> Working
+Directory and set it to $(PROJECT_DIR).
+
+Whew!  That's a lot of work.  But you should be able to hit command-R
+to just run the application.
+
 Info for other creative folks
 -----------------------------
 

@@ -7,20 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3826887A179F74E0008F05E1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38268879179F74E0008F05E1 /* Cocoa.framework */; };
 		3826889B179F76C4008F05E1 /* screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38268899179F75AC008F05E1 /* screen.cpp */; };
+		3866DAAD17A2D674001F7521 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3866DAAC17A2D674001F7521 /* IOKit.framework */; };
+		3866DAAF17A2D68D001F7521 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3866DAAE17A2D68D001F7521 /* Cocoa.framework */; };
+		3866DAB117A2D693001F7521 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3866DAB017A2D693001F7521 /* OpenGL.framework */; };
+		386E172217A2D73800695B54 /* file_posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 386E171817A2D6FD00695B54 /* file_posix.cpp */; };
+		386E172317A2D73800695B54 /* opengl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 386E171A17A2D6FD00695B54 /* opengl.cpp */; };
+		386E172417A2D73800695B54 /* pixmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 386E171C17A2D70B00695B54 /* pixmap.cpp */; };
+		386E172517A2D73800695B54 /* resource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 386E171E17A2D70B00695B54 /* resource.cpp */; };
+		386E172617A2D73800695B54 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 386E172017A2D71800695B54 /* texture.cpp */; };
+		386E172817A2D76500695B54 /* pixmap_coregraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 386E172717A2D76500695B54 /* pixmap_coregraphics.cpp */; };
+		386E172A17A2D99000695B54 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386E172917A2D99000695B54 /* ApplicationServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		38268876179F74E0008F05E1 /* Seven.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seven.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		38268879179F74E0008F05E1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		3826887C179F74E0008F05E1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		3826887D179F74E0008F05E1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		3826887E179F74E0008F05E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		38268897179F75AC008F05E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		38268898179F75AC008F05E1 /* Seven-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Seven-Info.plist"; sourceTree = "<group>"; };
 		38268899179F75AC008F05E1 /* screen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = screen.cpp; path = src/screen.cpp; sourceTree = SOURCE_ROOT; };
 		3826889A179F75AC008F05E1 /* screen.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = screen.hpp; path = src/screen.hpp; sourceTree = SOURCE_ROOT; };
+		3866DAAC17A2D674001F7521 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		3866DAAE17A2D68D001F7521 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		3866DAB017A2D693001F7521 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
+		386E171817A2D6FD00695B54 /* file_posix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = file_posix.cpp; path = src/file_posix.cpp; sourceTree = SOURCE_ROOT; };
+		386E171917A2D6FD00695B54 /* file.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = file.hpp; path = src/file.hpp; sourceTree = SOURCE_ROOT; };
+		386E171A17A2D6FD00695B54 /* opengl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = opengl.cpp; path = src/opengl.cpp; sourceTree = SOURCE_ROOT; };
+		386E171B17A2D6FD00695B54 /* opengl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = opengl.hpp; path = src/opengl.hpp; sourceTree = SOURCE_ROOT; };
+		386E171C17A2D70B00695B54 /* pixmap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = pixmap.cpp; path = src/pixmap.cpp; sourceTree = SOURCE_ROOT; };
+		386E171D17A2D70B00695B54 /* pixmap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = pixmap.hpp; path = src/pixmap.hpp; sourceTree = SOURCE_ROOT; };
+		386E171E17A2D70B00695B54 /* resource.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = resource.cpp; path = src/resource.cpp; sourceTree = SOURCE_ROOT; };
+		386E171F17A2D70B00695B54 /* resource.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = resource.hpp; path = src/resource.hpp; sourceTree = SOURCE_ROOT; };
+		386E172017A2D71800695B54 /* texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = texture.cpp; path = src/texture.cpp; sourceTree = SOURCE_ROOT; };
+		386E172117A2D71800695B54 /* texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = texture.hpp; path = src/texture.hpp; sourceTree = SOURCE_ROOT; };
+		386E172717A2D76500695B54 /* pixmap_coregraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pixmap_coregraphics.cpp; path = src/pixmap_coregraphics.cpp; sourceTree = SOURCE_ROOT; };
+		386E172917A2D99000695B54 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/ApplicationServices.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,7 +48,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3826887A179F74E0008F05E1 /* Cocoa.framework in Frameworks */,
+				386E172A17A2D99000695B54 /* ApplicationServices.framework in Frameworks */,
+				3866DAB117A2D693001F7521 /* OpenGL.framework in Frameworks */,
+				3866DAAF17A2D68D001F7521 /* Cocoa.framework in Frameworks */,
+				3866DAAD17A2D674001F7521 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,28 +69,31 @@
 		38268878179F74E0008F05E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				38268879179F74E0008F05E1 /* Cocoa.framework */,
-				3826887B179F74E0008F05E1 /* Other Frameworks */,
+				386E172917A2D99000695B54 /* ApplicationServices.framework */,
+				3866DAB017A2D693001F7521 /* OpenGL.framework */,
+				3866DAAE17A2D68D001F7521 /* Cocoa.framework */,
+				3866DAAC17A2D674001F7521 /* IOKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3826887B179F74E0008F05E1 /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3826887C179F74E0008F05E1 /* AppKit.framework */,
-				3826887D179F74E0008F05E1 /* CoreData.framework */,
-				3826887E179F74E0008F05E1 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		3826887F179F74E0008F05E1 /* Seven */ = {
 			isa = PBXGroup;
 			children = (
 				38268895179F75AC008F05E1 /* osx */,
+				386E171817A2D6FD00695B54 /* file_posix.cpp */,
+				386E171917A2D6FD00695B54 /* file.hpp */,
+				386E171A17A2D6FD00695B54 /* opengl.cpp */,
+				386E171B17A2D6FD00695B54 /* opengl.hpp */,
+				386E172717A2D76500695B54 /* pixmap_coregraphics.cpp */,
+				386E171C17A2D70B00695B54 /* pixmap.cpp */,
+				386E171D17A2D70B00695B54 /* pixmap.hpp */,
+				386E171E17A2D70B00695B54 /* resource.cpp */,
+				386E171F17A2D70B00695B54 /* resource.hpp */,
 				38268899179F75AC008F05E1 /* screen.cpp */,
 				3826889A179F75AC008F05E1 /* screen.hpp */,
+				386E172017A2D71800695B54 /* texture.cpp */,
+				386E172117A2D71800695B54 /* texture.hpp */,
 			);
 			path = Seven;
 			sourceTree = "<group>";
@@ -151,7 +177,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				386E172217A2D73800695B54 /* file_posix.cpp in Sources */,
+				386E172317A2D73800695B54 /* opengl.cpp in Sources */,
+				386E172417A2D73800695B54 /* pixmap.cpp in Sources */,
+				386E172517A2D73800695B54 /* resource.cpp in Sources */,
+				386E172617A2D73800695B54 /* texture.cpp in Sources */,
 				3826889B179F76C4008F05E1 /* screen.cpp in Sources */,
+				386E172817A2D76500695B54 /* pixmap_coregraphics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,9 +227,22 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/libs/glfw/include",
+					"$(PROJECT_DIR)/libs/glew/include",
+				);
 				INFOPLIST_FILE = "src/osx/Seven-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libs/glfw/src\"",
+					"\"$(SRCROOT)/libs/glew/lib\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(PROJECT_DIR)/libs/glfw/src/libglfw3.a",
+					"$(PROJECT_DIR)/libs/glew/lib/libGLEW.a",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
@@ -224,8 +269,21 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/libs/glfw/include",
+					"$(PROJECT_DIR)/libs/glew/include",
+				);
 				INFOPLIST_FILE = "src/osx/Seven-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libs/glfw/src\"",
+					"\"$(SRCROOT)/libs/glew/lib\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"$(PROJECT_DIR)/libs/glfw/src/libglfw3.a",
+					"$(PROJECT_DIR)/libs/glew/lib/libGLEW.a",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
@@ -254,6 +312,7 @@
 				38268892179F74E0008F05E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38FADE97179F74040011168D /* Build configuration list for PBXProject "Seven" */ = {
 			isa = XCConfigurationList;
