@@ -60,7 +60,7 @@ public:
     unsigned char *row(int i) { return data_ + rowbytes_ * i; }
     int width() const { return width_; }
     int height() const { return height_; }
-    int rowbytes() const { return rowbytes_; }
+    std::size_t rowbytes() const { return rowbytes_; }
     int channel_count() const { return channel_count_; }
 
     void premultiply_alpha();
