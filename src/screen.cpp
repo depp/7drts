@@ -2,6 +2,7 @@
 #include "screen.hpp"
 #include "texture.hpp"
 #include "resource.hpp"
+#include "file.hpp"
 #include <cstdio>
 namespace Seven {
 
@@ -122,6 +123,9 @@ int Screen::main(int argc, char *argv[]) {
     glfwSetScrollCallback(window, scroll_callback);
 
     glfwMakeContextCurrent(window);
+
+    Buffer buf = File::read("assets/sprites/little_sprite/LSdefaultfront.png");
+    std::printf("buffer size: %zu\n", buf.size());
 
     Texture tex1, tex2;
     tex1.load_file("tex/tex1");

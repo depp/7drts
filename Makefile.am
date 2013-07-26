@@ -8,6 +8,8 @@ seven_LDADD = @GLFW_LIBS@ @GLEW_LIBS@
 seven_LDFLAGS = -Wl,--as-needed
 
 seven_SOURCES = \
+	src/file_posix.cpp \
+	src/file.hpp \
 	src/opengl.cpp \
 	src/opengl.hpp \
 	src/pixmap.cpp \
