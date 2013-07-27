@@ -130,6 +130,8 @@ Pixmap load(const void *data, std::size_t size) {
     if (!obj.read_data(pixmap))
         throw std::runtime_error("PNG::load()");
 
+    pixmap.premultiply_alpha();
+
     return pixmap;
 }
 
