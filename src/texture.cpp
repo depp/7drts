@@ -31,6 +31,7 @@ public:
         case 2: ifmt = GL_RG8; efmt = GL_RG; break;
         case 3: ifmt = GL_RGBA8; efmt = GL_RGB; break;
         case 4: ifmt = GL_RGBA8; efmt = GL_RGBA; break;
+        default: throw std::runtime_error("Texture::load()");
         }
         GLuint tex;
         glGenTextures(1, &tex);
