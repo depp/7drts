@@ -29,6 +29,7 @@ public:
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         glScaled((double) tex.img_width(), (double) tex.img_height(), 1.0);
+        glScaled(0.1, 0.1, 1.0);
         float tw = (float) tex.img_width() / (float) tex.tex_width();
         float th = (float) tex.img_height() / (float) tex.tex_height();
         glEnable(GL_BLEND);

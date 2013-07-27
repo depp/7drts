@@ -54,4 +54,100 @@ void Pixmap::premultiply_alpha() {
     }
 }
 
+Pixmap downsample_pixmap(const Pixmap &pixmap) {
+    int width = pixmap.buf_width() / 2, height = pixmap.buf_height() / 2;
+    std::size_t irb = pixmap.rowbytes(), orb;
+    const unsigned char *idata = pixmap.data();
+    unsigned char *odata;
+    int x, y;
+    unsigned r, g, b, a;
+
+    if (pixmap.buf_width() < 1 || pixmap.buf_height() < 1 ||
+        (pixmap.buf_width() != width * 2 && pixmap.buf_width() != 1) ||
+        (pixmap.buf_height() != height * 2 && pixmap.buf_height() != 1) ||
+        (pixmap.buf_width() == 1 && pixmap.buf_height() == 1))
+        throw std::domain_error("downsample_pixmap()");
+    width = width ? width : 1;
+    height = height ? height : 1;
+    Pixmap new_pixmap(width, height, pixmap.channel_count());
+    orb = new_pixmap.rowbytes();
+    odata = new_pixmap.data();
+
+    if (pixmap.buf_width() == 1) {
+        switch (pixmap.channel_count()) {
+        case 4:
+            for (y = 0; y < height; y++) {
+                r = idata[(2*y+0)*irb+0] +
+                    idata[(2*y+1)*irb+0];
+                g = idata[(2*y+0)*irb+1] +
+                    idata[(2*y+1)*irb+1];
+                b = idata[(2*y+0)*irb+2] +
+                    idata[(2*y+1)*irb+2];
+                a = idata[(2*y+0)*irb+3] +
+                    idata[(2*y+1)*irb+3];
+                odata[y*orb+0] = r >> 1;
+                odata[y*orb+1] = g >> 1;
+                odata[y*orb+2] = b >> 1;
+                odata[y*orb+3] = a >> 1;
+            }
+            break;
+        default:
+            throw std::domain_error("downsample_pixmap()");
+        }
+    } else if (pixmap.buf_height() == 1) {
+        switch (pixmap.channel_count()) {
+        case 4:
+            for (x = 0; x < width; x++) {
+                r = idata[8*x+0] +
+                    idata[8*x+4];
+                g = idata[8*x+1] +
+                    idata[8*x+5];
+                b = idata[8*x+2] +
+                    idata[8*x+6];
+                a = idata[8*x+3] +
+                    idata[8*x+7];
+                odata[4*x+0] = r >> 1;
+                odata[4*x+1] = g >> 1;
+                odata[4*x+2] = b >> 1;
+                odata[4*x+3] = a >> 1;
+            }
+            break;
+        default:
+            throw std::domain_error("downsample_pixmap()");
+        }
+    } else {
+        switch (pixmap.channel_count()) {
+        case 4:
+            for (y = 0; y < height; y++) {
+                for (x = 0; x < width; x++) {
+                    r = idata[(2*y+0)*irb+8*x+0] +
+                        idata[(2*y+0)*irb+8*x+4] +
+                        idata[(2*y+1)*irb+8*x+0] +
+                        idata[(2*y+1)*irb+8*x+4];
+                    g = idata[(2*y+0)*irb+8*x+1] +
+                        idata[(2*y+0)*irb+8*x+5] +
+                        idata[(2*y+1)*irb+8*x+1] +
+                        idata[(2*y+1)*irb+8*x+5];
+                    b = idata[(2*y+0)*irb+8*x+2] +
+                        idata[(2*y+0)*irb+8*x+6] +
+                        idata[(2*y+1)*irb+8*x+2] +
+                        idata[(2*y+1)*irb+8*x+6];
+                    a = idata[(2*y+0)*irb+8*x+3] +
+                        idata[(2*y+0)*irb+8*x+7] +
+                        idata[(2*y+1)*irb+8*x+3] +
+                        idata[(2*y+1)*irb+8*x+7];
+                    odata[y*orb+4*x+0] = r >> 2;
+                    odata[y*orb+4*x+1] = g >> 2;
+                    odata[y*orb+4*x+2] = b >> 2;
+                    odata[y*orb+4*x+3] = a >> 2;
+                }
+            }
+            break;
+        default:
+            throw std::domain_error("downsample_pixmap()");
+        }
+    }
+    return new_pixmap;
+}
+
 }

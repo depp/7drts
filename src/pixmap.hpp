@@ -76,5 +76,8 @@ namespace PNG {
 Pixmap load(const void *data, std::size_t size);
 }
 
+// Generate a pixmap with half the resolution
+Pixmap downsample_pixmap(const Pixmap &pixmap);
+
 }
 #endif
