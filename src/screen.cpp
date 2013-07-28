@@ -7,11 +7,11 @@ namespace Seven {
 
 // Test, temporary
 class TestScreen : public Screen {
-    Texture tex;
+    Texture::Ref tex;
 
 public:
     TestScreen() {
-        tex.load_file("assets/sprites/little_sprite/LSdefaultfront");
+        tex.load("assets/sprites/unit_small/stand_front");
     }
 
     virtual ~TestScreen() { }
@@ -28,14 +28,14 @@ public:
                 1.0, -1.0);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
-        glScaled((double) tex.img_width(), (double) tex.img_height(), 1.0);
+        glScaled((double) tex->img_width, (double) tex->img_height, 1.0);
         glScaled(0.1, 0.1, 1.0);
-        float tw = (float) tex.img_width() / (float) tex.tex_width();
-        float th = (float) tex.img_height() / (float) tex.tex_height();
+        float tw = (float) tex->img_width / (float) tex->tex_width;
+        float th = (float) tex->img_height / (float) tex->tex_height;
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
         glEnable(GL_TEXTURE_2D);
-        glBindTexture(GL_TEXTURE_2D, tex.texture());
+        glBindTexture(GL_TEXTURE_2D, tex->texture);
         glBegin(GL_TRIANGLE_STRIP);
         glTexCoord2f(0.0f,   th); glVertex2f(0.0f, 0.0f);
         glTexCoord2f(  tw,   th); glVertex2f(1.0f, 0.0f);
